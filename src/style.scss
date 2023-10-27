@@ -1,0 +1,64 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-equinox-social-link {
+	.link {
+		background-color: var(--wp--preset--color--primary);
+		color: var(--wp--preset--color--contrast);
+
+		// margin: 0.5em 0;
+		padding: 0.5em 1.5em;
+		border-radius: 99999px;
+
+		display: flex;
+		user-select: none;
+
+		text-decoration: none;
+		font-style: normal;
+		font-weight: normal;
+
+		transition-property: transform, box-shadow;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 0.15s;
+
+		box-shadow: 1px 1px rgb(0 0 0 / 0.05);
+
+		&:hover {
+			transform: scale(1.025);
+			box-shadow: 0 10px 8px rgb(0 0 0 / 0.04);
+		}
+
+		&:active {
+			transform: translate-y(2px);
+		}
+
+		.link-icon {
+			display: flex;
+			align-items: center;
+			font-size: 24px;
+
+			i {
+				position: absolute;
+			}
+		}
+
+		.content {
+			flex-grow: 1;
+			text-align: center;
+
+			.title {
+				margin: 0;
+			}
+
+			.description {
+				margin: 0;
+				font-size: 0.875em;
+				opacity: 0.75;
+			}
+		}
+	}
+}

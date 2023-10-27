@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "equinox/social-link",
+	"version": "0.1.0",
+	"title": "Social Link Block",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "A simple button with an icon, title and description",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "social-link",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Example Link",
+			"source": "text",
+			"selector": "p.title"
+		},
+		"description": {
+			"type": "string",
+			"default": "Link Description",
+			"source": "text",
+			"selector": "p.description"
+		},
+		"icon": {
+			"type": "string",
+			"default": "mdi mdi-bell",
+			"source": "attribute",
+			"attribute": "class",
+			"selector": "i[icon]"
+		},
+		"link": {
+			"type": "string",
+			"default": "https://example.org",
+			"source": "attribute",
+			"attribute": "href",
+			"selector": "a.link"
+		}
+	}
+}
