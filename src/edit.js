@@ -48,6 +48,18 @@ import {
 export default function Edit({ attributes, setAttributes }) {
 	const { title, description, icon, link } = attributes;
 
+	// Extract the svg path from the input
+	const extractPath = (input) => {
+		// Return empty string if not a string
+		if (typeof input != "string") return "!INVALID INPUT!";
+		// Return input if already path-compatible
+		if (/^[a-zA-Z0-9,.\s]*$/.test(input)) return input;
+		// Extract the path from the input
+		const match = /<path[^<>]*?d=['"]([a-zA-Z0-9,.\s]*)['"]/.exec(input);
+		if (!match || !match[1]) return "!INVALID INPUT!";
+		else return match[1];
+	};
+
 	const onChangeTitle = (newTitle) => {
 		setAttributes({ title: newTitle === undefined ? "" : newTitle });
 	};
@@ -57,7 +69,7 @@ export default function Edit({ attributes, setAttributes }) {
 		});
 	};
 	const onChangeIcon = (newIcon) => {
-		setAttributes({ icon: newIcon === undefined ? "" : newIcon });
+		setAttributes({ icon: extractPath(newIcon) });
 	};
 	const onChangeLink = (newLink) => {
 		setAttributes({ link: newLink === undefined ? "" : newLink });
@@ -96,7 +108,10 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__("Icon", "social-link")}
 								value={icon}
 								onChange={onChangeIcon}
-								help={__("Icon of the button (Requires a plugin like material-design-icons to be installed, also see https://materialdesignicons.com/cdn/1.6.50-dev/ for available icons)", "social-link")}
+								help={__(
+									"Icon of the button (Paste in the svg data from a site like https://pictogrammers.com/library/mdi/ (Select an icon, click the '</>' button then paste it here))",
+									"social-link",
+								)}
 							/>
 						</fieldset>
 					</PanelRow>
@@ -115,7 +130,9 @@ export default function Edit({ attributes, setAttributes }) {
 
 			<a draggable="false" href={link} class="link">
 				<span class="link-icon">
-					<i class={icon} icon />
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d={icon} />
+					</svg>
 				</span>
 				<section class="content">
 					<p class="title">{title}</p>

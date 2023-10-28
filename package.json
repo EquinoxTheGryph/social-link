@@ -1,6 +1,6 @@
 {
 	"name": "social-link",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A simple button with an icon, title and description",
 	"author": "Equinox",
 	"license": "GPL-2.0-or-later",

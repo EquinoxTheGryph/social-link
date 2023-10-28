@@ -22,7 +22,9 @@ export default function save({ attributes }) {
 		<section {...useBlockProps.save()}>
 			<a draggable="false" href={link} class="link">
 				<span class="link-icon">
-					<i class={icon} icon />
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path d={icon} />
+					</svg>
 				</span>
 				<section class="content">
 					<p class="title">{title}</p>
